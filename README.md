@@ -8,12 +8,12 @@
 1. 引入依赖坐标
 
    ```xml
- <dependency>
-     <groupId>com.wonderbox</groupId>
-     <artifactId>wonderbox-all</artifactId>
-     <version>0.0.1</version>
- </dependency>
-   ```
+   <dependency>
+       <groupId>com.wonderbox</groupId>
+       <artifactId>wonderbox-all</artifactId>
+       <version>0.0.1</version>
+   </dependency>
+     ```
 2. 使用它即可
 
 
