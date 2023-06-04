@@ -9,7 +9,7 @@
    <img alt="Knife4j" src="https://raster.shields.io/badge/Knife4j-3.0+-orange.svg"/>
 </div>
 
-## 快速启动 🏁
+## 快速上手 🏁
 
 要开始使用 Wonder-Box，您可以按照以下简单步骤进行操作:
 
