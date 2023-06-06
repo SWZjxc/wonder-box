@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * @author Ge Mingjia
@@ -20,7 +19,7 @@ public class BeanBox {
      * @param <V> 转换后泛型类型
      * @return 转换后的Page泛型类
      */
-    public static <T, V> Page<V> toVOPage(Page<T> page, Function<T, V> converter) {
+    public static <T, V> Page<V> toNewPage(Page<T> page, Function<T, V> converter) {
         List<T> records = page.getRecords();
         List<V> voList = records.stream()
                 .map(converter)

@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
  */
 public class StringBox {
 
+    private static final Pattern SPACE_PATTERN = Pattern.compile("\\s+");
+    private static final Pattern IMPORT_PATTERN = Pattern.compile("import\\s+[^;]+;");
 
     /**
      * 去除字符串中多余的空格和换行符
@@ -25,12 +27,10 @@ public class StringBox {
         if (originString == null) {
             throw new ExceptionBox(ErrorCode.PARAMS_ERROR, "The parameter is not allowed to be null");
         }
-        // 去掉换行符
-        String newString = originString.replaceAll("\\n", " ");
+        /// 去掉换行符
+        String newString = originString.replace("\n", " ");
         // 去掉连续的空格
-        Pattern pattern = Pattern.compile("\\s+");
-        Matcher matcher = pattern.matcher(newString);
-        newString = matcher.replaceAll(" ");
+        newString = SPACE_PATTERN.matcher(newString).replaceAll(" ");
         return newString;
     }
 
@@ -44,8 +44,10 @@ public class StringBox {
         if (code == null) {
             throw new ExceptionBox(ErrorCode.PARAMS_ERROR, "The parameter is not allowed to be null");
         }
-        Pattern pattern = Pattern.compile("import\\s+[^;]+;");
-        Matcher matcher = pattern.matcher(code);
+        if (!code.contains("import")) {
+            return null;
+        }
+        Matcher matcher = IMPORT_PATTERN.matcher(code);
         StringBuilder builder = new StringBuilder();
         while (matcher.find()) {
             builder.append(matcher.group());
@@ -79,7 +81,9 @@ public class StringBox {
         if (originStr == null || rmStr == null || originStr.length() == 0 || rmStr.length() == 0) {
             throw new ExceptionBox(ErrorCode.PARAMS_ERROR, "The parameter is not allowed to be null or empty");
         }
+
         return originStr.replace(rmStr, "");
     }
+
 
 }
